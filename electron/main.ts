@@ -1,4 +1,7 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Notification } from 'electron';
+// import path from 'path';
+
+const isDev: boolean = !app.isPackaged;
 
 let mainWindow: BrowserWindow | null
 
@@ -13,10 +16,10 @@ function createWindow () {
     height: 700,
     backgroundColor: '#FFF',
     webPreferences: {
-      nodeIntegration: false,
-      worldSafeExecuteJavaScript: true,
+      nodeIntegration: true,
+      // worldSafeExecuteJavaScript: true,
       contextIsolation: true,
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
+      preload: /* path.join(__dirname, "electron", "preload.ts") */ MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
   })
 
@@ -25,13 +28,20 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+  isDev && mainWindow.webContents.openDevTools();
 }
 
 async function registerListeners () {
-  ipcMain.on('message', (_, message) => {
-    console.log(message)
+  ipcMain.on('notify', (_, message) => {
+    new Notification({ title: "Notification", body: message }).show();
   })
 }
+
+/* if (isDev) {
+  require("electron-reload")(__dirname, {
+    electron: path.join(__dirname, "node_modules", ".bin", "electron")
+  })
+} */
 
 app.on('ready', createWindow)
   .whenReady()
