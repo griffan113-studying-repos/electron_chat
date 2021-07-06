@@ -1,3 +1,33 @@
+html, body {
+  height: 100%;
+}
+
+:root {
+  --white: #fff;
+  --gray-100: #f8f9fc;
+  --gray-200: #f4f4f4;
+  --gray-300: #dddfeb;
+  --gray-400: #d1d3e2;
+  --gray-500: #b7b9cc;
+  --gray-600: #858796;
+  --gray-700: #6e707e;
+  --gray-800: #5a5c69;
+  --gray-900: #3a3b45;
+  --black: #000;
+  --blue: #4e73df;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #e74a3b;
+  --orange: #fd7e14;
+  --yellow: #f6c23e;
+  --green: #1cc88a;
+  --teal: #20c9a6;
+  --cyan: #36b9cc;
+  --brand-google: #ea4335;
+  --brand-facebook: #3b5998;
+}
+
 #chatApp {
   height: 100%;
 }
@@ -340,6 +370,12 @@ ul {
 span.name {
   font-weight: 700;
   align-self: center;
+  font-size: 1.75rem;
+}
+
+span.name.mr-2 {
+  font-weight: 700;
+  align-self: center;
   font-size: 1rem;
 }
 
@@ -361,7 +397,7 @@ span.name {
   justify-content: space-between;
 }
 
-.chat-navbar-inner.logged-in-user {
+.logged-in-user {
   display: flex;
   align-self: center;
   font-weight: bold;
@@ -388,7 +424,7 @@ span.name {
   height: 100%;
 }
 
-.centered-view.centered-container-form {
+.centered-container-form {
   width: 784px;
   padding: 32px;
   font-size: 18px;
@@ -408,26 +444,25 @@ span.name {
   }
 }
 
-.centered-view.centered-container-form.form-container {
+.form-container {
   width: 100%;
   text-align: left;
 }
 
-.centered-view.centered-container-form.form-container.form-check {
+.form-check {
   display: flex;
 }
 
-.centered-view.centered-container-form.form-container.form-check-input {
+.form-check-input {
   margin-top: 0;
 }
 
-.centered-view.centered-container-form.header {
+.header {
   font-size: 21px;
   font-weight: bold;
-  ;
 }
 
-.centered-view.centered-container-form.subheader {
+.subheader {
   color: var(--gray-800);
 }
 
