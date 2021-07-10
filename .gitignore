@@ -32,4 +32,4 @@ yarn-error.log*
 
 # firebase
 
-/src/firebase/
+src/firebase/db.ts
