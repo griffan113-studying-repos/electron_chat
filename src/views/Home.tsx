@@ -3,14 +3,15 @@ import { useEffect } from "react";
 import { JoinedChats } from "../components/JoinedChats";
 import { AvaliableChats } from "../components/AvaliableChats";
 import { NameContainer } from "../components/NameContainer";
-import { ChatService } from "../api/Chat.service";
+import { useDispatch } from "react-redux";
+import { fetchChats } from "../redux/actions/chats";
 
 export const Home = () => {
-  useEffect(() => {
-    const chatService = new ChatService();
+  const dispatch = useDispatch();
 
-    chatService.fetchChats();
-  }, [])
+  useEffect(() => {
+    dispatch(fetchChats())
+  }, [dispatch])
 
   return (
     <div className="row no-gutters fh">
