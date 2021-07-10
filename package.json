@@ -6,6 +6,7 @@
   "main": "./.webpack/main/index.js",
   "scripts": {
     "start": "electron-forge start",
+    "watch": "webpack --config webpack/main.webpack.js --watch",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "release": "electron-forge publish",
@@ -16,6 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "4.5.2",
+    "firebase": "^8.7.1",
+    "process": "^0.11.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hot-loader": "4.13.0",
@@ -48,6 +51,7 @@
     "babel-loader": "8.2.2",
     "cross-env": "7.0.3",
     "css-loader": "^5.2.6",
+    "dotenv-webpack": "^7.0.3",
     "electron": "13.1.2",
     "electron-reload": "^1.5.0",
     "eslint": "7.29.0",
@@ -65,7 +69,8 @@
     "style-loader": "^3.0.0",
     "ts-jest": "27.0.3",
     "typescript": "4.3.4",
-    "wait-on": "5.3.0"
+    "wait-on": "5.3.0",
+    "webpack-cli": "^4.7.2"
   },
   "config": {
     "forge": {

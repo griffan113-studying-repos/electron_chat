@@ -20,7 +20,7 @@ export function App () {
           <Route path="/settings" >
             <Settings />
           </Route>
-          <Route path="/chat" >
+          <Route path="/chat/:id" >
             <Chat />
           </Route>
           <Route path="/register" >
