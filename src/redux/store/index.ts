@@ -1,5 +1,19 @@
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import reduxFunc from 'redux-thunk';
+
+import { chatReducer } from "../reducers/chats";
+
+interface IRootState {
+  chats: {
+    items?: {
+      id?: string;
+      name?: string;
+      description?: string;
+      image?: string;
+      admin?: string;
+    }
+  };
+}
 
 export const configureStore = () => {
 
@@ -7,7 +21,11 @@ export const configureStore = () => {
     reduxFunc
   ]
 
-  const store = createStore(() => { }, applyMiddleware(...middlewares));
+  const store = createStore(combineReducers({
+    chats: chatReducer
+  }), applyMiddleware(...middlewares));
 
   return store
 }
+
+export type RootState = IRootState;

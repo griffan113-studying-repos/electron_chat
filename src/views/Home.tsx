@@ -3,11 +3,15 @@ import { useEffect } from "react";
 import { JoinedChats } from "../components/JoinedChats";
 import { AvaliableChats } from "../components/AvaliableChats";
 import { NameContainer } from "../components/NameContainer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchChats } from "../redux/actions/chats";
+import { RootState } from "../redux/store";
 
 export const Home = () => {
   const dispatch = useDispatch();
+  const chats = useSelector<RootState>(({ chats }): RootState => chats?.items);
+
+  console.log(chats);
 
   useEffect(() => {
     dispatch(fetchChats())
