@@ -3,17 +3,9 @@ import reduxFunc from 'redux-thunk';
 
 import { chatReducer } from "../reducers/chats";
 
-interface IRootState {
-  chats: {
-    items?: {
-      id?: string;
-      name?: string;
-      description?: string;
-      image?: string;
-      admin?: string;
-    }
-  };
-}
+const reducers = combineReducers({
+  chats: chatReducer,
+})
 
 export const configureStore = () => {
 
@@ -21,11 +13,14 @@ export const configureStore = () => {
     reduxFunc
   ]
 
-  const store = createStore(combineReducers({
-    chats: chatReducer
-  }), applyMiddleware(...middlewares));
+  const store = createStore(
+    reducers,
+    applyMiddleware(...middlewares)
+  );
 
   return store
 }
 
-export type RootState = IRootState;
+const store = configureStore();
+
+export type State = ReturnType<typeof store.getState>;

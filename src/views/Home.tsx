@@ -1,15 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, FC } from "react";
 
 import { JoinedChats } from "../components/JoinedChats";
 import { AvaliableChats } from "../components/AvaliableChats";
 import { NameContainer } from "../components/NameContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchChats } from "../redux/actions/chats";
-import { RootState } from "../redux/store";
+import { State } from "../redux/store";
+import { Chat } from "../redux/@types/Chat.type";
 
-export const Home = () => {
+export const Home: FC = () => {
   const dispatch = useDispatch();
-  const chats = useSelector<RootState>(({ chats }): RootState => chats?.items);
+  const chats = useSelector<State>(({ chats }) => chats.items);
 
   console.log(chats);
 
@@ -20,12 +21,12 @@ export const Home = () => {
   return (
     <div className="row no-gutters fh">
       <div className="col-3 fh">
-        <JoinedChats />
+        <JoinedChats chats={chats} />
       </div>
       <div className="col-9 fh">
         <NameContainer />
         <div className="container-fluid">
-          <AvaliableChats />
+          <AvaliableChats chats={chats} />
         </div>
       </div>
     </div>

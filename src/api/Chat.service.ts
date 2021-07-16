@@ -1,11 +1,5 @@
 import db from "../firebase/db";
-
-interface IChat {
-  name: string;
-  description: string;
-  image: string;
-  admin?: string;
-}
+import { IChat } from "./@types/IChat.interface";
 
 export class ChatService {
   public fetchChats = async () =>

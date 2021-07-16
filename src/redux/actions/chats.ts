@@ -1,23 +1,21 @@
-import { ChatService } from '../../api/Chat.service';
+import { Dispatch } from 'redux';
 
-export interface IAction {
-  type: string;
-  chats: {
-    id: string;
-    name: string;
-    description: string;
-    image: string;
-    admin?: string;
-  };
+import { ChatService } from '../../api/Chat.service';
+import { Action } from '../@types/Action.enum';
+import { Chat } from '../@types/Chat.type';
+
+export type IChatAction = {
+  type: Action.FETCH_SUCCESS;
+  chats: Chat[];
 }
 
 const chatService = new ChatService()
 
-export const fetchChats = (action?: IAction) => {
-  return async (dispatch: Function) => {
+export const fetchChats = () => {
+  return async (dispatch: Dispatch<IChatAction>) => {
     const chats = await chatService.fetchChats();
     dispatch({
-      type: 'CHATS_FETCH_SUCCESS',
+      type: Action.FETCH_SUCCESS,
       chats
     })
 
