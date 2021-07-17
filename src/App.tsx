@@ -7,8 +7,7 @@ import {
 
 import { Navbar } from "./components/Navbar";
 import { Settings } from "./views/Settings";
-import { Register } from "./views/Register";
-import { Login } from "./views/Login";
+import { Welcome } from "./views/Welcome";
 import { Chat } from "./views/Chat";
 import { Provider } from "react-redux";
 import { configureStore } from "./redux/store";
@@ -22,19 +21,16 @@ export function App () {
         <Navbar />
         <div className='content-wrapper'>
           <Switch>
+            <Route exact path="/" >
+              <Welcome />
+            </Route>
             <Route path="/settings" >
               <Settings />
             </Route>
             <Route path="/chat/:id" >
               <Chat />
             </Route>
-            <Route path="/register" >
-              <Register />
-            </Route>
-            <Route path="/login" >
-              <Login />
-            </Route>
-            <Route exact path="/" >
+            <Route path="/home" >
               <Home />
             </Route>
           </Switch>

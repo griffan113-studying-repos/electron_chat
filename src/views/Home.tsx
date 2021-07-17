@@ -6,7 +6,6 @@ import { NameContainer } from "../components/NameContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchChats } from "../redux/actions/chats";
 import { State } from "../redux/store";
-import { Chat } from "../redux/@types/Chat.type";
 
 export const Home: FC = () => {
   const dispatch = useDispatch();
