@@ -5,21 +5,21 @@ import { chatReducer } from "../reducers/chats";
 
 const reducers = combineReducers({
   chats: chatReducer,
-})
+});
 
 export const configureStore = () => {
 
   const middlewares = [
     reduxFunc
-  ]
+  ];
 
   const store = createStore(
     reducers,
     applyMiddleware(...middlewares)
   );
 
-  return store
-}
+  return store;
+};
 
 const store = configureStore();
 

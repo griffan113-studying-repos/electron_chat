@@ -1,20 +1,26 @@
-import { Home } from "./views/Home";
 import {
   HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
+import { useEffect } from "react";
 
+import { Home } from "./views/Home";
 import { Navbar } from "./components/Navbar";
 import { Settings } from "./views/Settings";
 import { Welcome } from "./views/Welcome";
 import { Chat } from "./views/Chat";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { configureStore } from "./redux/store";
+import { onAuthChange } from './redux/actions/auth';
 
 const store = configureStore();
 
 export function App () {
+  useEffect(() => {
+    store.dispatch(onAuthChange());
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>

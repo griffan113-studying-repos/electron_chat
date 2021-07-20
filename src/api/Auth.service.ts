@@ -1,22 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import db from "../firebase/db";
-import { Chat } from "../redux/@types/Chat.type";
-
-export type Register = {
-  email: string,
-  password: string,
-  username: string,
-  avatar: string,
-}
-
-type UserProfile = {
-  uid: string | undefined,
-  username: Register["username"],
-  email: Register["email"],
-  avatar: Register["avatar"],
-  joinedChats?: Array<Chat>
-}
+import { Register } from "./@types/Register.type";
+import { UserProfile } from "./@types/UserProfile.type";
 
 export class AuthService {
 
@@ -46,7 +32,7 @@ export class AuthService {
   }
 
   /**
-   * Create User profile
+   * Create User profile.
    */
 
   public async createUserProfile (userProfile: UserProfile) {
@@ -54,5 +40,13 @@ export class AuthService {
       .collection("profiles")
       .doc(userProfile.uid)
       .set(userProfile)
+  }
+
+  /**
+   * Firebase login listener.
+   */
+
+  public onAuthStateChange (onAuth: (user: any) => void) {
+    firebase.auth().onAuthStateChanged(onAuth)
   }
 }
